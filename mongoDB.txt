@@ -1,0 +1,653 @@
+
+Database:- Organized collection of data so that it can be esily accessed and managed.
+
+MongoDB is the data storged Software. Object from and NoSQL data base.
+
+NoSQL Database is MongoDB.
+
+MongoDB is a scalable, open source, high performance, document Oriented Database.
+
+MongoDB :- Scalablity, Performance, High Availability, Develop Faster, Scale Bigger
+
+
+            SQL DB             |             NoSQL DB 
+RDBMS- Relational Database     |  NOn-Relational or Distributed
+Management System              |
+                               |
+Data Stored in Tables          |  Data Stored in collection (like json)
+                               |  {
+                               |     name: 'shailendra'
+                               |      active: true
+                               |   }
+                               |
+Vertically scalable            |  Horizontal scalable
+
+
+
+// // // // //  MongoDB using Command // // // // // 
+
+Note:- [] using a Command; do not using any Box-Bracket.
+
+1:-  show dbs/databases                 [using this Command show all database]
+
+2:-  use [db_name]                      [using this Command create database]
+
+3:-  db                                 [using this Command which your current location]
+
+4:-  db.createCollection(['Cdb_name'])  [using this Command database inside create callection]
+
+5:-  db.[Cdb_name].insert({
+                            name: 'Jeetu',
+                            age: 28
+                        })              [using this Command also create collection and data also insert]
+
+6:-  show collections                   [using this Command show collection]
+
+7:-  db.[Cdb_name].drop()               [using this Command delete collection and data]
+
+8:-  db.dropDatabase()                  [using this Command delete database]
+                               
+                                Microsoft Windows [Version 6.1.7601]
+                                Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+                                C:\Users\Jeetu bhai>mongo
+                                MongoDB shell version v4.2.25
+                                connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+                                Implicit session: session { "id" : UUID("c0c150cf-52a1-4dee-b6a3-4fe40572b70f")}
+                                MongoDB server version: 4.2.25
+                                Server has startup warnings:
+                                2024-11-13T18:53:19.343+0530 I  CONTROL  [initandlisten]
+                                2024-11-13T18:53:19.344+0530 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+                                2024-11-13T18:53:19.345+0530 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+                                2024-11-13T18:53:19.346+0530 I  CONTROL  [initandlisten]
+                                2024-11-13T18:53:19.348+0530 I  CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+                                2024-11-13T18:53:19.350+0530 I  CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server.
+                                2024-11-13T18:53:19.352+0530 I  CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP
+                                2024-11-13T18:53:19.354+0530 I  CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+                                2024-11-13T18:53:19.357+0530 I  CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+                                2024-11-13T18:53:19.359+0530 I  CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+                                2024-11-13T18:53:19.523+0530 I  CONTROL  [initandlisten]
+                                ---
+                                Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+                                metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+                                The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+                                and anyone you share the URL with. MongoDB may use this information to make product
+                                improvements and to suggest MongoDB products and deployment options to you.
+
+                                To enable free monitoring, run the following command: db.enableFreeMonitoring()To permanently disable this reminder, run the following command: db.disableFreeM
+                                onitoring()---
+
+
+                                > show dbs
+                                admin   0.000GB
+                                config  0.000GB
+                                local   0.000GB
+
+                                > use Student
+                                switched to db Student
+
+                                > db
+                                Student
+
+                                > db.createCollection('College')
+                                { "ok" : 1 }
+
+                                > show collections
+                                College
+
+                                > db.user.insert({name:"Shailendra",age:29})
+                                WriteResult({ "nInserted" : 1 })
+
+                                > show collections
+                                College
+                                user
+
+                                > db.user.drop()
+                                true
+
+                                > show collections
+                                College
+
+                                > show dbs
+                                Student  0.000GB
+                                admin    0.000GB
+                                config   0.000GB
+                                local    0.000GB
+
+                                > db.dropDatabase()
+                                { "dropped" : "Student", "ok" : 1 }
+
+                                > show dbs
+                                admin   0.000GB
+                                config  0.000GB
+                                local   0.000GB
+                                
+
+
+9:-  insert()
+            -One, Multiple
+    
+     insertOne()                          [using this Command always insert the data single object]
+             single-object
+
+     insertMany()                         [using this Command always insert the data Multiple object but Array from insert database]
+             Multiple- array
+
+10:-  db.[Cdb_name].find()              [using this Command find the collection]  
+
+                                            
+                                    > show dbs
+                                    admin   0.000GB
+                                    config  0.000GB
+                                    local   0.000GB
+
+                                    > use College_Lib
+                                    switched to db College_Lib
+
+                                    > db
+                                    College_Lib
+
+                                    > db.createCollection("Books")
+                                    { "ok" : 1 }
+
+                                    > db.books.insert({
+                                    ... name: "Java",
+                                    ... pages:500,
+                                    ... price:1000
+                                    ... })
+                                    WriteResult({ "nInserted" : 1 })
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "name" : "Java", "pages" : 500,"price" : 1000 }
+
+                                    > db.books.insertOne({)
+                                    ... )
+
+                                    > db.books.insertOne({name:'C++', pages:400, price:900})
+                                    {
+                                            "acknowledged" : true,
+                                            "insertedId" : ObjectId("6734b715b26d60abc98021f3")
+                                    }
+
+                                    > db.books.insertMany([
+                                    ... {
+                                    ... name:"C",
+                                    ... pages:400,
+                                    ... price:350
+                                    ... },{
+                                    ... name:"javaScript",
+                                    ... pages:800,
+                                    ... price:1200
+                                    ... },{
+                                    ... name:"python",
+                                    ... pages:700,
+                                    ... price:2000
+                                    ... }])
+                                    {
+                                            "acknowledged" : true,
+                                            "insertedIds" : [
+                                                    ObjectId("6734b7fdb26d60abc98021f4"),
+                                                    ObjectId("6734b7fdb26d60abc98021f5"),
+                                                    ObjectId("6734b7fdb26d60abc98021f6")
+                                            ]
+                                    }
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "name" : "Java", "pages" : 500,"price" : 1000 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+
+                                    > db.books.insertOne({
+                                    ... name:"Comedy",
+                                    ... pages:900,
+                                    ... price:2000,
+                                    ... author:'Jeetu'})
+                                    {
+                                            "acknowledged" : true,
+                                            "insertedId" : ObjectId("6734b894b26d60abc98021f7")
+                                    }
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "name" : "Java", "pages" : 500,"price" : 1000 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b894b26d60abc98021f7"), "name" : "Comedy", "pages" : 900, "price" : 2000, "author" : "Jeetu" }
+                                    >
+
+
+11:-    How do ew update the data-
+
+            update()
+
+            updateOne()
+                                    [using this Command always mongoDB version 5 after only using one and many command alshow]
+            updateMany()
+
+
+Syntex:-
+                    {
+                    <operator1>: { <field1>: <value1>, ... },
+                    <operator2>: { <field2>: <value2>, ... },
+                    ...
+                    }
+
+
+Name                                                Description
+
+$currentDate                                [Sets the value of a field to current date, either as a Date or a Timestamp.]
+$inc                                        [Increments the value of the field by the specified amount.]
+$min                                        [Only updates the field if the specified value is less than the existing field value.]
+$max                                        [Only updates the field if the specified value is greater than the existing field value.]
+$mul                                        [Multiplies the value of the field by the specified amount.]
+$rename                                     [Renames a field.]
+$set                                        [Sets the value of a field in a document.]
+$setOnInsert                                [Sets the value of a field if an update results in an insert of a document. Has no effect on update operations that modify existing documents.]
+$unset                                      [Removes the specified field from a document.]
+
+
+Array  Operators
+
+Name                                                Description
+
+$                                            [Acts as a placeholder to update the first element that matches the query condition.]
+$[]                                          [Acts as a placeholder to update all elements in an array for the documents that match the query condition.]
+$[<identifier>]                              [Acts as a placeholder to update all elements that match the arrayFilters condition for the documents that match the query condition.]
+$addToSet                                    [Adds elements to an array only if they do not already exist in the set.]
+$pop                                         [Removes the first or last item of an array.]
+$pull                                        [Removes all array elements that match a specified query.]
+$push                                        [Adds an item to an array.]
+$pullAll                                     [Removes all matching values from an array.]
+
+
+Modifiers
+
+Name                                                Description
+
+$each                                        [Modifies the $push and $addToSet operators to append multiple items for array updates.]
+$position                                    [Modifies the $push operator to specify the position in the array to add elements.]
+$slice                                       [Modifies the $push operator to limit the size of updated arrays.]
+$sort                                        [Modifies the $push operator to reorder documents stored in an array.]
+
+Bitwise      
+
+   Name                                             Description
+
+$bit                                         [Performs bitwise AND, OR, and XOR updates of integer values.]
+
+
+
+                                    > db
+                                    College_Lib
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "name" : "Java", "pages" : 500, "price" : 1000 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b894b26d60abc98021f7"), "name" : "Comedy", "pages" : 900, "price" : 2000, "author" : "Jeetu" }
+
+                                    > db.books.update(
+                                    ... {_id:ObjectId("6734b664b26d60abc98021f2")},
+                                    ... {name:"The Complete Refernce", pages: 2500, price: 3000}
+                                    ... )
+                                    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "name" : "The Complete Refernce", "pages" : 2500, "price" : 3000 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b894b26d60abc98021f7"), "name" : "Comedy", "pages" : 900, "price" : 2000, "author" : "Jeetu" }
+
+                                    > db.books.updateOne({_id:ObjectId("6734b894b26d60abc98021f7")},
+                                    ... {$set:{
+                                    ... name:"This is a testing Books",
+                                    ... page:123,
+                                    ... price:25}
+                                    ... })
+                                    { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "name" : "The Complete Refernce", "pages" : 2500, "price" : 3000 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b894b26d60abc98021f7"), "name" : "This is a testing Books", "pages" : 900, "price" : 25, "author" : "Jeetu", "page" : 123 }
+
+                                    > db.books.updateOne({_id:ObjectId("6734b894b26d60abc98021f7")},{$rename:{name:'bookname'}})
+                                    { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "name" : "The Complete Refernce", "pages" : 2500, "price" : 3000 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b894b26d60abc98021f7"), "pages" : 900, "price" : 25, "author" : "Jeetu", "page" : 123, "bookname" : "This is a testing Books" }
+
+                                    > db.books.update({pages:2500},{$rename:{name:"Bookname"}})
+                                    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b894b26d60abc98021f7"), "pages" : 900, "price" : 25, "author" : "Jeetu", "page" : 123, "bookname" : "This is a testing Books" }
+
+                                    > db.books.update({_id:ObjectId("6734b894b26d60abc98021f7")},{$inc:{price:100}})
+                                    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b894b26d60abc98021f7"), "pages" : 900, "price" : 125, "author" : "Jeetu", "page" : 123, "bookname" : "This is a testing Books" }
+                                    >
+
+                                                                    
+
+
+12:-        Deleting the Object-
+
+        remove()
+
+        deleteOne()
+
+        deleteaMany()
+
+
+                                    > db.books.remove({_id:ObjectId("6734b894b26d60abc98021f7")})
+                                    WriteResult({ "nRemoved" : 1 })
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+
+
+13:-  
+
+//       //  //   Query Selectors         //      //      //
+
+Comparison
+For comparison of different BSON type values, see the specified BSON comparison order.
+
+Name                                            Description
+
+$eq                                 [Matches values that are equal to a specified value.]
+$gt                                 [Matches values that are greater than a specified value.]
+$gte                                [Matches values that are greater than or equal to a specified value.]
+$in                                 [Matches any of the values specified in an array.]
+$lt                                 [Matches values that are less than a specified value.]
+$lte                                [Matches values that are less than or equal to a specified value.]
+$ne                                 [Matches all values that are not equal to a specified value.]
+$nin                                [Matches none of the values specified in an array.]
+
+
+
+Element
+
+Name                                            Description
+
+$exists                             [Matches documents that have the specified field.]
+$type                               [Selects documents if a field is of the specified type.]
+
+
+Evaluation
+
+Name                                            Description
+$expr                               [Allows use of aggregation expressions within the query language.]
+$jsonSchema                         [Validate documents against the given JSON Schema.]
+$mod                                [Performs a modulo operation on the value of a field and selects documents with a specified result.]
+$regex                              [Selects documents where values match a specified regular expression.]
+$text                               [Performs text search.$text provides text query capabilities for self-managed (non-Atlas) deployments. For data hosted on MongoDB Atlas, MongoDB offers an improved full-text query solution, Atlas Search.]
+$where                              [Matches documents that satisfy a JavaScript expression.]
+
+
+Geospatial
+
+Name                                            Description
+$geoIntersects                      [Selects geometries that intersect with a GeoJSON geometry. The 2dsphere index supports $geoIntersects.]
+$geoWithin                          [Selects geometries within a bounding GeoJSON geometry. The 2dsphere and 2d indexes support $geoWithin.]
+$near                               [Returns geospatial objects in proximity to a point. Requires a geospatial index. The 2dsphere and 2d indexes support $near.]
+$nearSphere                         [Returns geospatial objects in proximity to a point on a sphere. Requires a geospatial index. The 2dsphere and 2d indexes support $nearSphere.]
+
+
+Array
+
+Name                                            Description
+$all                                [Matches arrays that contain all elements specified in the query.]
+$elemMatch                          [Selects documents if element in the array field matches all the specified $elemMatch conditions.]
+$size                               [Selects documents if the array field is a specified size.]
+
+Bitwise
+
+Name                                            Description
+
+$bitsAllClear                       [Matches numeric or binary values in which a set of bit positions all have a value of 0.]
+$bitsAllSet                         [Matches numeric or binary values in which a set of bit positions all have a value of 1.]
+$bitsAnyClear                       [Matches numeric or binary values in which any bit from a set of bit positions has a value of 0.]
+$bitsAnySet                         [Matches numeric or binary values in which any bit from a set of bit positions has a value of 1.]
+
+
+Projection Operators
+
+Name                                            Description
+$                                   [Projects the first element in an array that matches the query condition.]
+$elemMatch                          [Projects the first element in an array that matches the specified $elemMatch condition.]
+$meta                               [Projects the document's score assigned during the $text operation.$text provides text query capabilities for self-managed (non-Atlas) deployments. For data hosted on MongoDB Atlas, MongoDB offers an improved full-text query solution, Atlas Search.]
+$slice                              [Limits the number of elements projected from an array. Supports skip and limit slices.]
+
+Miscellaneous Operators
+
+Name                                            Description
+
+$comment                            [Adds a comment to a query predicate.]
+$rand                               [Generates a random float between 0 and 1.]
+
+
+
+
+
+                                    > db.books.find().pretty()
+                                    {
+                                            "_id" : ObjectId("6734b664b26d60abc98021f2"),
+                                            "pages" : 2500,
+                                            "price" : 3000,
+                                            "Bookname" : "The Complete Refernce"
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b715b26d60abc98021f3"),
+                                            "name" : "C++",
+                                            "pages" : 400,
+                                            "price" : 900
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f4"),
+                                            "name" : "C",
+                                            "pages" : 400,
+                                            "price" : 350
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f5"),
+                                            "name" : "javaScript",
+                                            "pages" : 800,
+                                            "price" : 1200
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f6"),
+                                            "name" : "python",
+                                            "pages" : 700,
+                                            "price" : 2000
+                                    }
+
+                                    > db.books.find().limit(2)
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+
+                                    > db.books.find().limit(2).pretty()
+                                    {
+                                            "_id" : ObjectId("6734b664b26d60abc98021f2"),
+                                            "pages" : 2500,
+                                            "price" : 3000,
+                                            "Bookname" : "The Complete Refernce"
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b715b26d60abc98021f3"),
+                                            "name" : "C++",
+                                            "pages" : 400,
+                                            "price" : 900
+                                    }
+
+                                    > db.books.find().sort({price:1})
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+
+                                    > db.books.find().sort({price:1}).pretty()
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f4"),
+                                            "name" : "C",
+                                            "pages" : 400,
+                                            "price" : 350
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b715b26d60abc98021f3"),
+                                            "name" : "C++",
+                                            "pages" : 400,
+                                            "price" : 900
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f5"),
+                                            "name" : "javaScript",
+                                            "pages" : 800,
+                                            "price" : 1200
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f6"),
+                                            "name" : "python",
+                                            "pages" : 700,
+                                            "price" : 2000
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b664b26d60abc98021f2"),
+                                            "pages" : 2500,
+                                            "price" : 3000,
+                                            "Bookname" : "The Complete Refernce"
+                                    }
+
+                                    > db.books.find().sort({price:-1}).pretty()
+                                    {
+                                            "_id" : ObjectId("6734b664b26d60abc98021f2"),
+                                            "pages" : 2500,
+                                            "price" : 3000,
+                                            "Bookname" : "The Complete Refernce"
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f6"),
+                                            "name" : "python",
+                                            "pages" : 700,
+                                            "price" : 2000
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f5"),
+                                            "name" : "javaScript",
+                                            "pages" : 800,
+                                            "price" : 1200
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b715b26d60abc98021f3"),
+                                            "name" : "C++",
+                                            "pages" : 400,
+                                            "price" : 900
+                                    }
+                                    {
+                                            "_id" : ObjectId("6734b7fdb26d60abc98021f4"),
+                                            "name" : "C",
+                                            "pages" : 400,
+                                            "price" : 350
+                                    }
+
+                                    > db.books.find().limit(3).sort({name:-1})
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+
+                                    > db.books.find({price:{$eq:900}})
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+
+                                    > db.books.find({price:{$gt:900}})
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+
+                                    > db.books.find({price:{$gte:900}})
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+
+                                    > db.books.find({price:{$in:[300,900]}})
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+
+                                    > db.books.find()
+                                    { "_id" : ObjectId("6734b664b26d60abc98021f2"), "pages" : 2500, "price" : 3000, "Bookname" : "The Complete Refernce" }
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f5"), "name" : "javaScript", "pages" : 800, "price" : 1200 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f6"), "name" : "python", "pages" : 700, "price" : 2000 }
+
+
+
+
+
+13:-  
+Logical
+
+Name                                            Description
+$and                                [Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.]
+$not                                [Inverts the effect of a query expression and returns documents that do not match the query expression.]
+$nor                                [Joins query clauses with a logical NOR returns all documents that fail to match both clauses.]
+$or                                 [Joins query clauses with a logical OR returns all documents that match the conditions of either clause.]
+
+
+
+
+
+
+                                    > db.books.find({$and:[{pages:400},{price:900}]})
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+
+                                    > db.books.find({$or:[{pages:400},{price:900}]})
+                                    { "_id" : ObjectId("6734b715b26d60abc98021f3"), "name" : "C++", "pages" : 400, "price" : 900 }
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+
+
+                                    > db.books.find({price:350})
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C", "pages" : 400, "price" : 350 }
+
+                                    > db.books.find({price:350},{name:1})
+                                    { "_id" : ObjectId("6734b7fdb26d60abc98021f4"), "name" : "C" }
+
+                                    > db.books.find({price:350},{name:1,_id:0})
+                                    { "name" : "C" }
+
+
+
+
